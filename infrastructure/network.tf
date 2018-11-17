@@ -5,8 +5,9 @@
 # determine the CIDR block of that VPC.
 ##
 resource "aws_vpc" "default" {
-  cidr_block = "${var.vpc_cidr}"
+  cidr_block           = "${var.vpc_cidr}"
   enable_dns_hostnames = true
+
   tags {
     Name = "challenge-vpc"
   }
@@ -18,7 +19,7 @@ resource "aws_vpc" "default" {
 # Provides an Elastic IP resource
 ##
 resource "aws_eip" "eip" {
-  vpc      = true
+  vpc = true
 }
 
 ##
@@ -27,9 +28,9 @@ resource "aws_eip" "eip" {
 # Provides details about a specific Nat Gateway
 ##
 resource "aws_nat_gateway" "public-nat" {
-    allocation_id = "${aws_eip.eip.id}"
-    subnet_id = "${aws_subnet.public-subnet.id}"
-    depends_on = ["aws_internet_gateway.gw"]
+  allocation_id = "${aws_eip.eip.id}"
+  subnet_id     = "${aws_subnet.public-subnet-a.id}"
+  depends_on    = ["aws_internet_gateway.gw"]
 }
 
 ##
@@ -39,6 +40,7 @@ resource "aws_nat_gateway" "public-nat" {
 ##
 resource "aws_internet_gateway" "gw" {
   vpc_id = "${aws_vpc.default.id}"
+
   tags {
     Name = "VPC Internet Gateway"
   }
@@ -54,10 +56,12 @@ resource "aws_internet_gateway" "gw" {
 # Define the route table
 resource "aws_route_table" "web-public-rt" {
   vpc_id = "${aws_vpc.default.id}"
+
   route {
     cidr_block = "0.0.0.0/0"
     gateway_id = "${aws_internet_gateway.gw.id}"
   }
+
   tags {
     Name = "Public Subnet Route Table"
   }
@@ -65,6 +69,6 @@ resource "aws_route_table" "web-public-rt" {
 
 # Assign the route table to the public Subnet
 resource "aws_route_table_association" "web-public-rt" {
-  subnet_id = "${aws_subnet.public-subnet.id}"
+  subnet_id      = "${aws_subnet.public-subnet-a.id}"
   route_table_id = "${aws_route_table.web-public-rt.id}"
 }

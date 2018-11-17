@@ -6,32 +6,42 @@
 
 variable "aws_region" {
   description = "AWS Region"
-  default = "us-east-1"
+  default     = "us-east-1"
 }
 
 variable "vpc_cidr" {
   description = "VPC Classless Inter-Daomin Routing"
-  default = "10.0.0.0/16"
+  default     = "10.0.0.0/16"
 }
 
-variable "public_subnet_cidr" {
+variable "public_subnet_a_cidr" {
   description = "Public Subnet"
-  default = "10.0.1.0/24"
+  default     = "10.0.10.0/24"
 }
 
-variable "private_subnet_cidr" {
+variable "public_subnet_b_cidr" {
+  description = "Public Subnet"
+  default     = "10.0.11.0/24"
+}
+
+variable "private_subnet_a_cidr" {
   description = "Private Subnet"
-  default = "10.0.2.0/24"
+  default     = "10.0.20.0/24"
+}
+
+variable "private_subnet_b_cidr" {
+  description = "Private Subnet"
+  default     = "10.0.21.0/24"
 }
 
 variable "ami" {
   description = "Linux AMI"
-  default = "ami-0ac019f4fcb7cb7e6"
+  default     = "ami-0ac019f4fcb7cb7e6"
 }
 
 variable "key_path" {
   description = "SSH Public Key path"
-  default = "~/.ssh/id_rsa.pub"
+  default     = "~/.ssh/id_rsa.pub"
 }
 
 ##
@@ -54,26 +64,56 @@ variable "engine" {
 
 variable "engine_version" {
   description = "Engine version"
+
   default = {
     postgres = "9.6.8"
   }
 }
 
 variable "instance_class" {
-  default = "db.t2.micro"
+  default     = "db.t2.micro"
   description = "Instance class"
 }
 
 variable "db_name" {
-  default = "baseA"
+  default     = "baseA"
   description = "db name"
 }
 
 variable "username" {
-  default = "root"
+  default     = "root"
   description = "User name"
 }
 
 variable "password" {
+  default     = "A1B2c3d4E5"
   description = "password, provide through ENV variables"
+}
+
+##
+# Elasticsearch
+##
+variable "domain" {
+  default = "challenge"
+}
+
+variable "instance_type" {
+  default     = "t2.small.elasticsearch"
+  description = "Elasticsearch instance type"
+}
+
+variable "elasticsearch_version" {
+  default     = "6.3"
+  description = "Elasticsearch version"
+}
+
+##
+# Lambda
+##
+variable "python_source_path" {
+  default = "../lambda-scripts"
+}
+
+variable "output_lambda_path" {
+  default = "../bin"
 }
