@@ -9,6 +9,9 @@ resource "aws_iam_service_linked_role" "es" {
   aws_service_name = "es.amazonaws.com"
 }
 
+# Data source to get the access to the effective Account ID, User ID, and ARN
+data "aws_caller_identity" "current" {}
+
 data "aws_iam_policy_document" "policy" {
   statement {
     sid       = "AllowSQSPermissions"
@@ -68,7 +71,10 @@ resource "aws_iam_role" "iam_role" {
     {
       "Effect": "Allow",
       "Principal": {
-        "Service": "lambda.amazonaws.com"
+        "Service": [
+          "lambda.amazonaws.com",
+          "apigateway.amazonaws.com"
+        ]
       },
       "Action": "sts:AssumeRole"
     }

@@ -21,7 +21,7 @@ def send_signed(method, url, service='es', region='us-east-1', body=None):
 def handler(event, context):
     print('Starting my lambda python')
 
-    url = 'https://search-challenge-tzmrlhv2uxu3u27atrvo5mxf2u.us-east-1.es.amazonaws.com/challange/_doc/'
+    url = 'https://search-challenge-tzmrlhv2uxu3u27atrvo5mxf2u.us-east-1.es.amazonaws.com/challenge/_doc/'
 
     for record in event['Records']:
         payload = record["body"]
