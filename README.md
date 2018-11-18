@@ -21,15 +21,15 @@ Sem dúvidas, elasticsearch é a base de dados que precisamos para indexar os da
 ### Primeiro sistema
 O primeiro sistema, precisa de informações da Base A, que possui os dados mais sensíveis. Este sistma jamais poderá fazer acesso diretamente a base de dados por questão de segurança. O fluxo deve ser o seguinte:
 
- 1. Envia as requisições para uma fila (SQS)
+1. Envia as requisições para uma fila (SQS)
 
- 2. Haverá um consumidor (em instâncias auto escaláveis) ouvindo a fila, e ao chegar uma nova requisição, fará a consulta dos dados
+2. Haverá um consumidor (em instâncias auto escaláveis) ouvindo a fila, e ao chegar uma nova requisição, fará a consulta dos dados
 
-  2.1 A entrega do resultado, se ultrapassar o tamanho limite da fila, então o resultado será armazenado em um S3 Bucket, e o link será enviado para a fila de resposta
+  * A entrega do resultado, se ultrapassar o tamanho limite da fila, então o resultado será armazenado em um S3 Bucket, e o link será enviado para a fila de resposta
   
-  2.2 Se não ultrapassar o tamanho limite da fila, então o resultado será entregue diretamente na fila
+  * Se não ultrapassar o tamanho limite da fila, então o resultado será entregue diretamente na fila
   
- 3. O solicitante deve consumir os dados da fila para obter o resultado
+3. O solicitante deve consumir os dados da fila para obter o resultado
 
 ### Segundo sistema
 O segundo sistema acessará um endpoint para consumir os dados através de instâncias auto escaláveis.
