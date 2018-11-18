@@ -1,0 +1,16 @@
+server:
+  port: 8080
+  servlet:
+    contextPath: /challenge
+
+logging:
+  level:
+    root: info
+    br.com.score: debug
+    org.springframework.web: info
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/base-b
+
