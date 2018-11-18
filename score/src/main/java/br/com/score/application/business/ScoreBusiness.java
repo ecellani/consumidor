@@ -1,6 +1,6 @@
 package br.com.score.application.business;
 
-import br.com.score.application.ScoreException;
+import br.com.score.application.business.exception.ScoreException;
 import br.com.score.application.model.Person;
 import br.com.score.application.model.Property;
 import lombok.extern.slf4j.Slf4j;

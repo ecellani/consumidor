@@ -1,7 +1,6 @@
 package br.com.score.application.service;
 
 import br.com.score.application.builders.PersonBuilder;
-import br.com.score.application.business.ScoreBusiness;
 import br.com.score.application.model.Person;
 import br.com.score.infrastructure.repository.PersonRepository;
 import org.junit.Test;
@@ -10,7 +9,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 

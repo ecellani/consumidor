@@ -1,15 +1,14 @@
 package br.com.score.application.business;
 
-import br.com.score.application.ScoreException;
 import br.com.score.application.builders.PersonBuilder;
+import br.com.score.application.business.exception.ScoreException;
 import br.com.score.application.model.Person;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.beans.factory.annotation.Autowired;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ScoreBusinessTest {

@@ -12,5 +12,6 @@ logging:
 spring:
   data:
     mongodb:
-      uri: mongodb://localhost:27017/base-b
-
+      host: localhost
+      port: 27017
+      database: "base-b"

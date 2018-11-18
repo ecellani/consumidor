@@ -1,4 +1,4 @@
-package br.com.score.application;
+package br.com.score.application.business.exception;
 
 public class ScoreException extends Exception {
 
