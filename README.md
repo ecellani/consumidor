@@ -34,9 +34,9 @@ O primeiro sistema, precisa de informações da Base A, que possui os dados mais
 ### Segundo sistema
 O segundo sistema acessará um endpoint para consumir os dados através de instâncias auto escaláveis (EC2 ou containers).
 
-[Segundo Sistema](https://github.com/ecellani/consumidor/score)
+[Segundo Sistema](https://github.com/ecellani/consumidor/tree/master/score)
 
-* [Testes](https://github.com/ecellani/consumidor/score/src/test/java/br/com/score/application)
+* [Testes](https://github.com/ecellani/consumidor/tree/master/score/src/test/java/br/com/score/application)
 
 ### Terceiro sistema
 O terceiro sistema tem a mais alta performance, pois trata-se de uma função lambda simples, com poucas regras de negócio, que fará buscas em um banco de dados de altíssima performance.
