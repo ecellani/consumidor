@@ -43,4 +43,11 @@ public class ScoreServiceTest {
         when(personRepository.findByCpf(cpf)).thenReturn(null);
         assertEquals(null, scoreService.getPersonByCpf(cpf));
     }
+
+    @Test
+    public void cpfNotInformed() {
+        assertEquals(null, scoreService.getPersonByCpf(""));
+        assertEquals(null, scoreService.getPersonByCpf(" "));
+        assertEquals(null, scoreService.getPersonByCpf(null));
+    }
 }
