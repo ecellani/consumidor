@@ -45,9 +45,9 @@ resource "aws_security_group" "sgweb" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  vpc_id = "${aws_vpc.default.id}"
+  vpc_id = aws_vpc.default.id
 
-  tags {
+  tags = {
     Name = "Security Group Web"
   }
 }
@@ -61,21 +61,21 @@ resource "aws_security_group" "sgdb" {
     from_port   = 5432
     to_port     = 5432
     protocol    = "tcp"
-    cidr_blocks = ["${var.public_subnet_a_cidr}", "${var.public_subnet_b_cidr}"]
+    cidr_blocks = [var.public_subnet_a_cidr, var.public_subnet_b_cidr]
   }
 
   ingress {
     from_port   = -1
     to_port     = -1
     protocol    = "icmp"
-    cidr_blocks = ["${var.public_subnet_a_cidr}", "${var.public_subnet_b_cidr}"]
+    cidr_blocks = [var.public_subnet_a_cidr, var.public_subnet_b_cidr]
   }
 
   ingress {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["${var.public_subnet_a_cidr}", "${var.public_subnet_b_cidr}"]
+    cidr_blocks = [var.public_subnet_a_cidr, var.public_subnet_b_cidr]
   }
 
   egress {
@@ -85,9 +85,9 @@ resource "aws_security_group" "sgdb" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  vpc_id = "${aws_vpc.default.id}"
+  vpc_id = aws_vpc.default.id
 
-  tags {
+  tags = {
     Name = "Security Group DataBases"
   }
 }

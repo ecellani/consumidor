@@ -98,12 +98,12 @@ variable "domain" {
 }
 
 variable "instance_type" {
-  default     = "t2.small.elasticsearch"
+  default     = "t3.small.elasticsearch"
   description = "Elasticsearch instance type"
 }
 
 variable "elasticsearch_version" {
-  default     = "6.3"
+  default     = "7.10"
   description = "Elasticsearch version"
 }
 

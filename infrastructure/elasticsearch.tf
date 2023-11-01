@@ -2,11 +2,11 @@
 # Amazon Elasticsearch Service
 ##
 resource "aws_elasticsearch_domain" "es" {
-  domain_name           = "${var.domain}"
-  elasticsearch_version = "${var.elasticsearch_version}"
+  domain_name           = var.domain
+  elasticsearch_version = var.elasticsearch_version
 
   cluster_config {
-    instance_type = "${var.instance_type}"
+    instance_type = var.instance_type
   }
 
   ebs_options {
@@ -23,7 +23,7 @@ resource "aws_elasticsearch_domain" "es" {
   #     security_group_ids = ["${aws_security_group.sgdb.id}"]
   #   }
 
-  tags {
+  tags = {
     Domain = "Challenge Domain"
   }
   access_policies = <<CONFIG
